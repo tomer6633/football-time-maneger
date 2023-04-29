@@ -1,13 +1,14 @@
 import express from "express";
 import mongoose, { Schema } from "mongoose";
-import { PlayerSchema } from "../player/playerModel";
 
 interface Game{
-  players: string[]
+  Games: string[]
 }
 
 const gameSchema= new Schema({
-  players: String,
+  Games: String,
 })
 
-const GameModel= mongoose.model("game",gameSchema)
+const GameModel= mongoose.model("game",gameSchema);
+
+export default GameModel

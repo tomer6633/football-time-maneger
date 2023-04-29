@@ -9,7 +9,7 @@ export const getUsers = async (req: any, res: any) => {
     res.send({ users });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ error: error.massage });
+    // res.status(500).send({ error: error.massage });
   }
 };
 
@@ -24,7 +24,7 @@ export const addUser = async (req: any, res: any) => {
     res.status(201).send({ ok: true });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ error: error.massage });
+    // res.status(500).send({ error: error.massage });
   }
 };
 
@@ -43,7 +43,7 @@ export const login = async (req: any, res: any) => {
     res.status(201).send({ ok: true });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ error: error.massage });
+    // res.status(500).send({ error: error.massage });
   }
 };
 
@@ -56,7 +56,7 @@ export const deleteUser = async (res: any, req: any) => {
     res.status(201).send({ ok: true });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ error: error.massage });
+    // res.status(500).send({ error: error.massage });
   }
 };
 
@@ -70,7 +70,7 @@ export const updateUserType = async (req: any, res: any) => {
     res.status(201).send({ ok: true, userDB });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ error: error.massage });
+    // res.status(500).send({ error: error.massage });
   }
 };
 
@@ -92,6 +92,6 @@ export const getUser = async (req: any, res: any) => {
     res.send({ ok: true, user: userDB });
   } catch (error: any) {
     console.error(error);
-    res.status(500).send({ error: error.message });
+    // res.status(500).send({ error: error.message });
   }
 };

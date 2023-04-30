@@ -28,24 +28,31 @@ export const addUser = async (req: any, res: any) => {
   }
 };
 
+
 export const login = async (req: any, res: any) => {
   try {
     const { userName, password } = req.body;
     console.log(userName, password);
     const userDB = await UserModel.findOne({ userName, password });
-    if (!userDB) throw new Error("UserName of password are not corect");
-    if (!secret) throw new Error("missing JWT secret");
+    if (!userDB) {
+      return res.status(401).json({ message: "Username or password are not correct" });
+    }
+    const secret = process.env.JWT_SECRET;
+    if (!secret) throw new Error("Missing JWT secret");
 
     const token = jwt.encode({ userId: userDB._id, role: "public" }, secret);
     console.log(token);
-    res.cookie("user", token, { maxAge: 5000000000000000, httpOnly: true });
+    res.cookie("user", token, { maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true });
 
-    res.status(201).send({ ok: true });
+
+
+    res.status(201).send({ ok: true , userDB});
   } catch (error) {
     console.error(error);
-    // res.status(500).send({ error: error.massage });
+    // res.status(500).send({ error: error.message });
   }
 };
+
 
 export const deleteUser = async (res: any, req: any) => {
   try {

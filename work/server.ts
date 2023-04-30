@@ -6,7 +6,6 @@ dotenv.config();
 import cookieParser from 'cookie-parser';
 const uri: string | undefined = process.env.MONGODB_URI;
 
-//to be able to get data from client add this line
 app.use(cookieParser())
 
 if (uri) {
@@ -24,17 +23,16 @@ app.use(express.json());
 app.use(express.static("./public"));
 
 import usersRouter from './API/user/userRoute';
-app.use('/api/users', usersRouter);
+app.use('/api/user', usersRouter);
 
 import playerRouter from './API/player/playerRoute';
-app.use('/api/courses', playerRouter);
+app.use('/api/player', playerRouter);
 
 
 import gameRouter from './API/game/gameRoute';
-app.use('/api/courses', gameRouter);
+app.use('/api/game', gameRouter);
 
 
-
-app.listen(3000, () => {
-  console.log("server listen on port 3000");
+app.listen(4000, () => {
+  console.log("server listen on port 4000");
 });

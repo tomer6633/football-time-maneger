@@ -44,12 +44,12 @@ export const getPlayers = async (req: any, res: any) => {
   };
 
 
+
   export const updatePlayerType = async (req: any, res: any) => {
     try {
-      const { playerId, playerType } = req.body;
-      const playerDB = await PlayerModel.findByIdAndUpdate(
-        { _id: playerId },
-        { playerType }
+      const { playerId, PositionType } = req.body;
+      const playerDB = await PlayerModel.updateOne(
+        { PositionType }
       );
       res.status(201).send({ ok: true, playerDB });
     } catch (error) {

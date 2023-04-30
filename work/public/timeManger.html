@@ -5,11 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>timeManger</title>
-    <link rel="stylesheet" href="./dist/style.css">
+    <link rel="stylesheet" href="./dist/styleTimeManger.css">
+    <script src="./dist/timerManger.js"></script>
 
 </head>
 <body>
-    <h1> Time manger</h1> 
-    <a href="./teamLook.html"> Look at team</a>   
+    <h1 class="title soccer-theme" id="main-title">Time Manager</h1>
+    <form onsubmit="handleAddPlayer(event)" class="form">
+      <label for="user-name" class="label">Name:</label>
+      <input type="text" name="userName" id="user-name" class="input-field" placeholder="Enter your name" required>
+      <label for="fit" class="label">Are you fit?</label>
+      <select name="fit" id="fit" class="select-field">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+      <label for="position" class="label">Position:</label>
+      <select onsubmit="handleUpdatePlayerType(event)" name="playerType" id="position" class="select-field">
+        <option value="substitute">Default</option>
+        <option value="goalkeeper">Goalkeeper</option>
+        <option value="defender">Defender</option>
+        <option value="midfielder">Midfielder</option>
+        <option value="forward">Forward</option>
+      </select>
+      <button type="submit" class="button" id="register-btn">Register for the game</button>
+    </form>
+    <a href="./teamLook.html" class="link" id="team-look-link">View team</a>
 </body>
+
 </html>

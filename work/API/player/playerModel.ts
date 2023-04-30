@@ -7,12 +7,12 @@ interface Player{
     position:String,
 }
 
-export enum PositionType{
-  GOALKEEPER= "goalkeeper",
-  DEFENDER= "defender",
-  MIDFILEDER= "midfileder",
-  FORWARD= "forward",
-  SUBSTITUTE= "substitute"
+export enum PositionType {
+  SUBSTITUTE = "SUBSTITUTE",
+  ATTACKER = "ATTACKER",
+  MIDFIELDER = "MIDFIELDER",
+  DEFENDER = "DEFENDER",
+  GOALKEEPER = "GOALKEEPER",
 }
 
 export const PlayerSchema = new Schema({

@@ -26,6 +26,12 @@ interface User{
       })
         .then((res) => res.json())
         .then((data) => {
+          const{ok}=data;
+          if(ok){
+            //redirect to another page
+            window.location.href= "timeManger.html"
+
+          }
           console.log(data);
         })
         .catch((error) => {

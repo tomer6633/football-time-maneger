@@ -5,12 +5,14 @@ function handleAddPlayer(ev) {
         console.log(ev.target.elements);
         var userName = ev.target.elements.userName.value;
         var position = ev.target.elements.position.value;
+        var positionType = ev.target.elements.positionType.value;
         if (!userName)
             throw new Error("No name");
         if (!position)
             throw new Error("No position");
-        var newPlayer = { userName: userName, position: position };
-        //send to server:
+        if (!positionType)
+            throw new Error("No positionType");
+        var newPlayer = { userName: userName, position: position, positionType: positionType };
         fetch("/api/player/add-player", {
             method: "POST",
             headers: {
@@ -18,6 +20,36 @@ function handleAddPlayer(ev) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(newPlayer)
+        })
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+            console.log(data);
+        })["catch"](function (error) {
+            console.error(error);
+        });
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+function handelAddGame(ev) {
+    try {
+        ev.preventDefault();
+        console.log(ev.target.elements);
+        var Games = ev.target.elements.Games.value;
+        var day = ev.target.elements.day.value;
+        if (!Games)
+            throw new Error("no Gamess");
+        if (!day)
+            throw new Error("no day");
+        var newGames = { Games: Games, day: day };
+        fetch("/api/game/add-game", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newGames)
         })
             .then(function (res) { return res.json(); })
             .then(function (data) {

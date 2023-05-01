@@ -17,10 +17,10 @@ export const getPlayers = async (req: any, res: any) => {
 
   export const addPlayer = async (req: any, res: any) => {
     try {
-      const { userName, position } = req.body;
-      console.log(userName, position);
+      const { userName, position ,positionType } = req.body;
+      console.log(userName, position, positionType );
   
-      const playerDB = await PlayerModel.create({ userName, position });
+      const playerDB = await PlayerModel.create({ userName, position ,positionType });
       console.log(playerDB);
   
       res.status(201).send({ ok: true });

@@ -13,7 +13,7 @@ var PositionType;
 exports.PlayerSchema = new mongoose_1.Schema({
     userName: { require: true, type: String },
     position: { require: true, type: String },
-    PositionType: {
+    positionType: {
         type: String,
         "enum": PositionType,
         "default": PositionType.SUBSTITUTE

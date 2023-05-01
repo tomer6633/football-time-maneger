@@ -18,7 +18,7 @@ export enum PositionType {
 export const PlayerSchema = new Schema({
   userName: {require: true, type:String},
   position: {require : true, type:String},
-  PositionType:{
+  positionType:{
     type: String,
     enum: PositionType,
     default: PositionType.SUBSTITUTE

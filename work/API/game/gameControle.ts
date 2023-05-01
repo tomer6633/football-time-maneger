@@ -15,10 +15,10 @@ export const getGames= async (req:any,res:any)=>{
 
 export const addGame = async(req:any,res:any)=>{
     try {
-        const {games} = req.body;
-        console.log(games);
+        const {Games,day} = req.body;
+        console.log(Games,day);
 
-        const gameDB = await GameModel.create({games});
+        const gameDB = await GameModel.create({Games,day});
         console.log(gameDB);
 
         res.status(201).send({ok: true})

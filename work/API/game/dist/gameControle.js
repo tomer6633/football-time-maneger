@@ -36,123 +36,98 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getPlayer = exports.updatePlayerType = exports.deletePlayer = exports.addPlayer = exports.getPlayers = void 0;
-var playerModel_1 = require("./playerModel");
+exports.getGame = exports.deleteGame = exports.addGame = exports.getGames = void 0;
+var gameModel_1 = require("./gameModel");
 var jwt_simple_1 = require("jwt-simple");
 var mongoose_1 = require("mongoose");
 var secret = process.env.JWT_SECRET;
-exports.getPlayers = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var Players, error_1;
+exports.getGames = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var games, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, playerModel_1["default"].find({})];
+                return [4 /*yield*/, gameModel_1["default"].find({})];
             case 1:
-                Players = _a.sent();
-                res.send({ Players: Players });
+                games = _a.sent();
+                res.send({ games: games });
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
                 console.error(error_1);
-                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); };
-exports.addPlayer = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, userName, position, positionType, playerDB, error_2;
+exports.addGame = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, Games, day, gameDB, error_2;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 2, , 3]);
-                _a = req.body, userName = _a.userName, position = _a.position, positionType = _a.positionType;
-                console.log(userName, position, positionType);
-                return [4 /*yield*/, playerModel_1["default"].create({ userName: userName, position: position, positionType: positionType })];
+                _a = req.body, Games = _a.Games, day = _a.day;
+                console.log(Games, day);
+                return [4 /*yield*/, gameModel_1["default"].create({ Games: Games, day: day })];
             case 1:
-                playerDB = _b.sent();
-                console.log(playerDB);
+                gameDB = _b.sent();
+                console.log(gameDB);
                 res.status(201).send({ ok: true });
                 return [3 /*break*/, 3];
             case 2:
                 error_2 = _b.sent();
                 console.error(error_2);
-                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); };
-exports.deletePlayer = function (res, req) { return __awaiter(void 0, void 0, void 0, function () {
-    var _id, deleteplayer, Players, error_3;
+exports.deleteGame = function (res, req) { return __awaiter(void 0, void 0, void 0, function () {
+    var _id, deleteGame_1, games, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 3, , 4]);
                 _id = req.body._id;
-                return [4 /*yield*/, playerModel_1["default"].deleteOne({ _id: _id })];
+                return [4 /*yield*/, gameModel_1["default"].deleteOne({ _id: _id })];
             case 1:
-                deleteplayer = _a.sent();
-                return [4 /*yield*/, playerModel_1["default"].find({})];
+                deleteGame_1 = _a.sent();
+                return [4 /*yield*/, gameModel_1["default"].find({})];
             case 2:
-                Players = _a.sent();
+                games = _a.sent();
                 res.status(201).send({ ok: true });
                 return [3 /*break*/, 4];
             case 3:
                 error_3 = _a.sent();
                 console.error(error_3);
-                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }
     });
 }); };
-exports.updatePlayerType = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, playerId, PositionType, playerDB, error_4;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 2, , 3]);
-                _a = req.body, playerId = _a.playerId, PositionType = _a.PositionType;
-                return [4 /*yield*/, playerModel_1["default"].updateOne({ PositionType: PositionType })];
-            case 1:
-                playerDB = _b.sent();
-                res.status(201).send({ ok: true, playerDB: playerDB });
-                return [3 /*break*/, 3];
-            case 2:
-                error_4 = _b.sent();
-                console.error(error_4);
-                res.status(500).send({ Error: mongoose_1.Error.Messages });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); };
-exports.getPlayer = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var player, decoded, playerId, role, playerDB, error_5;
+exports.getGame = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var game, decoded, gameId, role, gameDB, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                player = req.cookies.player;
-                console.log(player);
+                game = req.cookies.game;
+                console.log(game);
                 if (!secret)
                     throw new mongoose_1.Error("No secret");
-                decoded = jwt_simple_1["default"].decode(player, secret);
+                decoded = jwt_simple_1["default"].decode(game, secret);
                 console.log(decoded);
-                playerId = decoded.playerId, role = decoded.role;
+                gameId = decoded.gameId, role = decoded.role;
                 if (role === "admin")
                     console.log("Full access");
-                return [4 /*yield*/, playerModel_1["default"].findById(playerId)];
+                return [4 /*yield*/, gameModel_1["default"].findById(gameId)];
             case 1:
-                playerDB = _a.sent();
-                res.send({ ok: true, player: playerDB });
+                gameDB = _a.sent();
+                res.send({ ok: true, game: gameDB });
                 return [3 /*break*/, 3];
             case 2:
-                error_5 = _a.sent();
-                console.error(error_5);
-                res.status(500).send({ Error: mongoose_1.Error.Messages });
+                error_4 = _a.sent();
+                console.error(error_4);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

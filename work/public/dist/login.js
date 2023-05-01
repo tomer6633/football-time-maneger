@@ -19,6 +19,11 @@ function handleLogin(ev) {
         })
             .then(function (res) { return res.json(); })
             .then(function (data) {
+            var ok = data.ok;
+            if (ok) {
+                //redirect to another page
+                window.location.href = "timeManger.html";
+            }
             console.log(data);
         })["catch"](function (error) {
             console.error(error);

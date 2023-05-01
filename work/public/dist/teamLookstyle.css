@@ -11,3 +11,27 @@ img {
   height: 90vh;
   width: 50vw;
 }
+
+#team1 {
+  color: red;
+}
+
+.substitute {
+  color: blue;
+}
+
+.attacker {
+  color: red;
+}
+
+.midfileder {
+  color: pink;
+}
+
+.defender {
+  color: yellow;
+}
+
+.goalkeeper {
+  color: green;
+}

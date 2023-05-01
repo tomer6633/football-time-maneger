@@ -2,18 +2,18 @@
 // renderplayer- לרנדר את השחקנים
 // get game- לקחת את השם של המשחק
 //render game - לרנדר את השם של המשחק 
-function handleGetUsers() {
+function handleGetPlayers() {
     console.log("test");
     try {
         fetch("/api/player/get-players")
             .then(function (res) { return res.json(); })
             .then(function (_a) {
-            var players = _a.players;
+            var Players = _a.Players;
             try {
-                if (!players)
-                    throw new Error("didnt find players");
-                console.log(players);
-                renderplayers(players);
+                if (!Players)
+                    throw new Error("didnt find Players");
+                console.log(Players);
+                renderPlayers(Players);
             }
             catch (error) {
                 console.error(error);
@@ -24,28 +24,41 @@ function handleGetUsers() {
         console.error(error);
     }
 }
-function renderplayers(players) {
+function renderPlayers(players) {
     try {
         if (!players)
-            throw new Error("No users");
-        var html = players
-            .map(function (players) {
-            return renderUser(players);
+            throw new Error("No players");
+        // Group players by position
+        var positions_1 = {};
+        players.forEach(function (player) {
+            if (!positions_1[player.position]) {
+                positions_1[player.position] = [];
+            }
+            positions_1[player.position].push(player);
+        });
+        var positionsHtml = Object.keys(positions_1)
+            .map(function (position) {
+            var playersHtml = positions_1[position]
+                .map(function (player) { return renderPlayer(player); })
+                .join("");
+            return "<div class=\"positionCard\">\n                    <h2>" + position + "s</h2>\n                    " + playersHtml + "\n                  </div>";
         })
-            .join(" ");
-        var usersElement = document.querySelector("#users");
-        if (!usersElement)
-            throw new Error("coundnt find users element on DOM");
-        usersElement.innerHTML = html;
+            .join("");
+        var positionsElement = document.querySelector("#positions");
+        if (!positionsElement) {
+            throw new Error("Couldn't find positions element on DOM");
+        }
+        positionsElement.innerHTML = positionsHtml;
     }
     catch (error) {
         console.error(error);
     }
 }
-function renderUser(player) {
+function renderPlayer(player) {
     try {
         console.log(player);
-        return "<div class=\"userCard\">\n                <p>u play in " + player.position + "</p>  \n              </div>";
+        var positionClass = player.position.toLowerCase();
+        return "<div class=\"userCard " + positionClass + "\">\n                <p>" + player.userName + " plays in " + player.position + "</p>\n              </div>";
     }
     catch (error) {
         console.error(error);

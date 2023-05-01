@@ -10,7 +10,7 @@ export const getPlayers = async (req: any, res: any) => {
       res.send({ Players });
     } catch (error) {
       console.error(error);
-      // res.status(500).send({ error: error.massage });
+      res.status(500).send({Error: Error.Messages})
     }
   };
 
@@ -26,7 +26,7 @@ export const getPlayers = async (req: any, res: any) => {
       res.status(201).send({ ok: true });
     } catch (error) {
       console.error(error);
-      // res.status(500).send({ error: error.massage });
+      res.status(500).send({Error: Error.Messages})
     }
   };
 
@@ -39,7 +39,7 @@ export const getPlayers = async (req: any, res: any) => {
       res.status(201).send({ ok: true });
     } catch (error) {
       console.error(error);
-      // res.status(500).send({ error: error.massage });
+      res.status(500).send({Error: Error.Messages})
     }
   };
 
@@ -54,7 +54,7 @@ export const getPlayers = async (req: any, res: any) => {
       res.status(201).send({ ok: true, playerDB });
     } catch (error) {
       console.error(error);
-      // res.status(500).send({ error: error.massage });
+      res.status(500).send({Error: Error.Messages})
     }
   };
 
@@ -76,6 +76,6 @@ export const getPlayers = async (req: any, res: any) => {
       res.send({ ok: true, player: playerDB });
     } catch (error: any) {
       console.error(error);
-      // res.status(500).send({ error: error.message });
+      res.status(500).send({Error: Error.Messages})
     }
   };

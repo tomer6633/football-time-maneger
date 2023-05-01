@@ -55,6 +55,7 @@ exports.getUsers = function (req, res) { return __awaiter(void 0, void 0, void 0
             case 2:
                 error_1 = _a.sent();
                 console.error(error_1);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -77,6 +78,7 @@ exports.addUser = function (req, res) { return __awaiter(void 0, void 0, void 0,
             case 2:
                 error_2 = _b.sent();
                 console.error(error_2);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -106,6 +108,7 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 return [3 /*break*/, 3];
             case 2:
                 error_3 = _b.sent();
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 console.error(error_3);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -130,6 +133,7 @@ exports.deleteUser = function (res, req) { return __awaiter(void 0, void 0, void
             case 3:
                 error_4 = _a.sent();
                 console.error(error_4);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }
@@ -150,6 +154,7 @@ exports.updateUserType = function (req, res) { return __awaiter(void 0, void 0, 
             case 2:
                 error_5 = _b.sent();
                 console.error(error_5);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -178,6 +183,7 @@ exports.getUser = function (req, res) { return __awaiter(void 0, void 0, void 0,
             case 2:
                 error_6 = _a.sent();
                 console.error(error_6);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

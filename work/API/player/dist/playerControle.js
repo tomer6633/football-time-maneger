@@ -55,6 +55,7 @@ exports.getPlayers = function (req, res) { return __awaiter(void 0, void 0, void
             case 2:
                 error_1 = _a.sent();
                 console.error(error_1);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -77,6 +78,7 @@ exports.addPlayer = function (req, res) { return __awaiter(void 0, void 0, void 
             case 2:
                 error_2 = _b.sent();
                 console.error(error_2);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -100,6 +102,7 @@ exports.deletePlayer = function (res, req) { return __awaiter(void 0, void 0, vo
             case 3:
                 error_3 = _a.sent();
                 console.error(error_3);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }
@@ -120,6 +123,7 @@ exports.updatePlayerType = function (req, res) { return __awaiter(void 0, void 0
             case 2:
                 error_4 = _b.sent();
                 console.error(error_4);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -148,6 +152,7 @@ exports.getPlayer = function (req, res) { return __awaiter(void 0, void 0, void 
             case 2:
                 error_5 = _a.sent();
                 console.error(error_5);
+                res.status(500).send({ Error: mongoose_1.Error.Messages });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

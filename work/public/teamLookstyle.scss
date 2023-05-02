@@ -1,35 +1,99 @@
-body{
-//   background-image: url("https://mcdn.wallpapersafari.com/medium/73/41/hBM51V.jpg");
-background-size: cover;
-// background-position: center;
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-}
-img{
-    height: 90vh;
-    width: 50vw;
-}
-
-#team1{
-    color: red;
-}
-.substitute{
-    color: blue;
-
-}
-.attacker{
-    color: red;
-
-}
-.midfileder{
-    color: pink;
-}
-.defender{
-    color:  yellow;
-}
-.goalkeeper{
-color: green;
-}
+/* Overall styles */
+body {
+    margin: 0;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Football_field.svg/1365px-Football_field.svg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  #field-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  #game {
+    color: white;
+    text-align: center;
+    font-size: 3em;
+  }
+  
+  #team-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  
+  #team1, #team2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    height: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 5px solid black;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  #team1 {
+    margin-right: 5%;
+  }
+  
+  #team2 {
+    margin-left: 5%;
+  }
+  
+  .positions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 5px;
+  }
+  
+  /* Substitute styles */
+  #substitutes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #substitutes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 5px;
+  }
+  
+  #substitutes-container h2 {
+    color: white;
+    text-align: center;
+    font-size: 2em;
+  }
+  
+  
+  a{
+    display: flex;
+  }

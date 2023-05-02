@@ -28,52 +28,62 @@ function handleGetPlayers() {
       console.error(error);
     }
   }
-  function renderPlayers(players: Array<Player>) {
+  function renderPlayers(players: any[]) {
     try {
       if (!players) throw new Error("No players");
   
+      // Group players by team
+      const teams = {
+        "Team 1": [],
+        "Team 2": []
+      };
+      players.forEach((player, index) => {
+        const team = index % 2 === 0 ? "Team 1" : "Team 2";
+        teams[team].push(player);
+      });
+  
+      // Render each team
+      renderTeam("team1-positions", "Team 1", teams["Team 1"]);
+      renderTeam("team2-positions", "Team 2", teams["Team 2"]);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  function renderTeam(containerId, teamName, players) {
+    try {
+      const container = document.querySelector(`#${containerId}`);
+      if (!container) throw new Error(`Couldn't find container element with id ${containerId}`);
+  
       // Group players by position
-      const positions: { [position: string]: Array<Player> } = {};
+      const positions = {};
       players.forEach((player) => {
         if (!positions[player.position]) {
           positions[player.position] = [];
         }
-        positions[player.position].push(player);
+        positions[player.position].push(player.userName); // modify to include player name
       });
   
+      // Render positions
       const positionsHtml = Object.keys(positions)
         .map((position) => {
           const playersHtml = positions[position]
-            .map((player) => renderPlayer(player))
+            .map((playerName) => `<div class="player">${playerName}</div>`) // generate HTML for player name
             .join("");
-          return `<div class="positionCard">
-                    <h2>${position}s</h2>
+          return `<div class="position">
+                    <h3>${position}s</h3>
                     ${playersHtml}
                   </div>`;
         })
         .join("");
-  
-      const positionsElement = document.querySelector("#positions");
-  
-      if (!positionsElement) {
-        throw new Error("Couldn't find positions element on DOM");
-      }
-  
-      positionsElement.innerHTML = positionsHtml;
+      container.innerHTML = `
+        <div class="team-name">${teamName}</div>
+        <div class="positions-container">${positionsHtml}</div>
+      `;
     } catch (error) {
       console.error(error);
     }
   }
   
-  function renderPlayer(player: Player) {
-    try {
-      console.log(player);
-      const positionClass = player.position.toLowerCase();
-      return `<div class="userCard ${positionClass}">
-                <p>${player.userName} plays in ${player.position}</p>
-              </div>`;
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
-  }
+  
+  

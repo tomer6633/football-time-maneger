@@ -37,7 +37,7 @@ function handleGetPlayers() {
         "Team 1": [],
         "Team 2": []
       };
-      players.forEach((player, index) => {
+      players.forEach((player: any, index: number) => {
         const team = index % 2 === 0 ? "Team 1" : "Team 2";
         teams[team].push(player);
       });
@@ -50,14 +50,14 @@ function handleGetPlayers() {
     }
   }
   
-  function renderTeam(containerId, teamName, players) {
+  function renderTeam(containerId: string, teamName: string, players: any[]) {
     try {
       const container = document.querySelector(`#${containerId}`);
       if (!container) throw new Error(`Couldn't find container element with id ${containerId}`);
   
       // Group players by position
       const positions = {};
-      players.forEach((player) => {
+      players.forEach((player: { position: string | number; userName: any; }) => {
         if (!positions[player.position]) {
           positions[player.position] = [];
         }
@@ -68,7 +68,7 @@ function handleGetPlayers() {
       const positionsHtml = Object.keys(positions)
         .map((position) => {
           const playersHtml = positions[position]
-            .map((playerName) => `<div class="player">${playerName}</div>`) // generate HTML for player name
+            .map((playerName: any) => `<div class="player">${playerName}</div>`) // generate HTML for player name
             .join("");
           return `<div class="position">
                     <h3>${position}s</h3>
@@ -77,7 +77,7 @@ function handleGetPlayers() {
         })
         .join("");
       container.innerHTML = `
-        <div class="team-name">${teamName}</div>
+        
         <div class="positions-container">${positionsHtml}</div>
       `;
     } catch (error) {

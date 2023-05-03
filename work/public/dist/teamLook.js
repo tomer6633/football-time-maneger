@@ -67,7 +67,7 @@ function renderTeam(containerId, teamName, players) {
             return "<div class=\"position\">\n                    <h3>" + position + "s</h3>\n                    " + playersHtml + "\n                  </div>";
         })
             .join("");
-        container.innerHTML = "\n        <div class=\"team-name\">" + teamName + "</div>\n        <div class=\"positions-container\">" + positionsHtml + "</div>\n      ";
+        container.innerHTML = "\n        \n        <div class=\"positions-container\">" + positionsHtml + "</div>\n      ";
     }
     catch (error) {
         console.error(error);

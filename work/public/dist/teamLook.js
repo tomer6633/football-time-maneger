@@ -1,7 +1,3 @@
-// צריך להכניס לפה getplayer
-// renderplayer- לרנדר את השחקנים
-// get game- לקחת את השם של המשחק
-//render game - לרנדר את השם של המשחק 
 function handleGetPlayers() {
     console.log("test");
     try {
@@ -28,7 +24,6 @@ function renderPlayers(players) {
     try {
         if (!players)
             throw new Error("No players");
-        // Group players by team
         var teams_1 = {
             "Team 1": [],
             "Team 2": []
@@ -37,7 +32,6 @@ function renderPlayers(players) {
             var team = index % 2 === 0 ? "Team 1" : "Team 2";
             teams_1[team].push(player);
         });
-        // Render each team
         renderTeam("team1-positions", "Team 1", teams_1["Team 1"]);
         renderTeam("team2-positions", "Team 2", teams_1["Team 2"]);
     }
@@ -50,19 +44,17 @@ function renderTeam(containerId, teamName, players) {
         var container = document.querySelector("#" + containerId);
         if (!container)
             throw new Error("Couldn't find container element with id " + containerId);
-        // Group players by position
         var positions_1 = {};
         players.forEach(function (player) {
             if (!positions_1[player.position]) {
                 positions_1[player.position] = [];
             }
-            positions_1[player.position].push(player.userName); // modify to include player name
+            positions_1[player.position].push(player.userName);
         });
-        // Render positions
         var positionsHtml = Object.keys(positions_1)
             .map(function (position) {
             var playersHtml = positions_1[position]
-                .map(function (playerName) { return "<div class=\"player\">" + playerName + "</div>"; }) // generate HTML for player name
+                .map(function (playerName) { return "<div class=\"player\">" + playerName + "</div>"; })
                 .join("");
             return "<div class=\"position\">\n                    <h3>" + position + "s</h3>\n                    " + playersHtml + "\n                  </div>";
         })

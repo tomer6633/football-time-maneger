@@ -67,7 +67,6 @@ a {
   display: flex;
 }
 
-/* Media query for smaller screens */
 @media screen and (max-width: 768px) {
   #team-container {
     flex-wrap: wrap;
@@ -87,7 +86,6 @@ a {
   }
 }
 
-/* Add a class to the soccer ball element in your HTML */
 .box {
   margin: 0 auto;
   width: 40px;
@@ -172,7 +170,6 @@ a {
   width: 140px;
   height: 290px;
   border: 5px solid white;
-  //  margin-top:150px;
   border-left-width: 0px;
   position: absolute;
   z-index: 10;
@@ -206,7 +203,6 @@ a {
 
 
 .soccer-ball-button {
-    // display: block;
     margin-left: 45%;
     display: inline-block;
     position: relative;

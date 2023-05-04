@@ -1,7 +1,4 @@
-// צריך להכניס לפה getplayer
-// renderplayer- לרנדר את השחקנים
-// get game- לקחת את השם של המשחק
-//render game - לרנדר את השם של המשחק 
+
 
 interface Player{
     userName: string,
@@ -32,7 +29,6 @@ function handleGetPlayers() {
     try {
       if (!players) throw new Error("No players");
   
-      // Group players by team
       const teams = {
         "Team 1": [],
         "Team 2": []
@@ -42,7 +38,6 @@ function handleGetPlayers() {
         teams[team].push(player);
       });
   
-      // Render each team
       renderTeam("team1-positions", "Team 1", teams["Team 1"]);
       renderTeam("team2-positions", "Team 2", teams["Team 2"]);
     } catch (error) {
@@ -55,20 +50,18 @@ function handleGetPlayers() {
       const container = document.querySelector(`#${containerId}`);
       if (!container) throw new Error(`Couldn't find container element with id ${containerId}`);
   
-      // Group players by position
       const positions = {};
       players.forEach((player: { position: string | number; userName: any; }) => {
         if (!positions[player.position]) {
           positions[player.position] = [];
         }
-        positions[player.position].push(player.userName); // modify to include player name
+        positions[player.position].push(player.userName); 
       });
   
-      // Render positions
       const positionsHtml = Object.keys(positions)
         .map((position) => {
           const playersHtml = positions[position]
-            .map((playerName: any) => `<div class="player">${playerName}</div>`) // generate HTML for player name
+            .map((playerName: any) => `<div class="player">${playerName}</div>`) 
             .join("");
           return `<div class="position">
                     <h3>${position}s</h3>

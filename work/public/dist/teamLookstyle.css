@@ -67,7 +67,6 @@ a {
   display: flex;
 }
 
-/* Media query for smaller screens */
 @media screen and (max-width: 768px) {
   #team-container {
     flex-wrap: wrap;
@@ -86,7 +85,6 @@ a {
     margin-top: 0;
   }
 }
-/* Add a class to the soccer ball element in your HTML */
 .box {
   margin: 0 auto;
   width: 40px;

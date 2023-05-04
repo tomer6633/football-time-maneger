@@ -15,7 +15,6 @@ function handleAddUser(ev: any) {
       if (!password) throw new Error("No Password");
       const newUser: any = { userName, password };
   
-      //send to server:
       fetch("/api/user/add-user", {
         method: "POST",
         headers: {

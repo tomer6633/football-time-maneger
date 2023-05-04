@@ -28,7 +28,6 @@ interface User{
         .then((data) => {
           const{ok}=data;
           if(ok){
-            //redirect to another page
             window.location.href= "timeManger.html"
 
           }

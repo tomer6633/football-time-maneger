@@ -21,7 +21,6 @@ function handleLogin(ev) {
             .then(function (data) {
             var ok = data.ok;
             if (ok) {
-                //redirect to another page
                 window.location.href = "timeManger.html";
             }
             console.log(data);

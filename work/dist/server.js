@@ -19,7 +19,7 @@ else {
     console.log("No URI to DB");
 }
 app.use(express_1["default"].json());
-app.use(express_1["default"].static("./public"));
+app.use(express_1["default"].static("./public/dist"));
 var userRoute_1 = require("./API/user/userRoute");
 app.use('/api/user', userRoute_1["default"]);
 var playerRoute_1 = require("./API/player/playerRoute");

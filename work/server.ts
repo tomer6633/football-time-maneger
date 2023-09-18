@@ -20,7 +20,7 @@ if (uri) {
 }
 
 app.use(express.json());
-app.use(express.static("./public"));
+app.use(express.static("./public/dist"));
 
 import usersRouter from './API/user/userRoute';
 app.use('/api/user', usersRouter);
